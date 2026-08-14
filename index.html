@@ -27,8 +27,10 @@
       font-family: "IBM Plex Sans", system-ui, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(ellipse 80% 50% at 50% -8%, rgba(26, 51, 72, 0.12), transparent 55%),
-        linear-gradient(180deg, #dfe6ea 0%, #cfd6db 40%, #c8d0d6 100%);
+        radial-gradient(ellipse 70% 48% at 8% -6%, rgba(186, 220, 255, 0.55), transparent 58%),
+        radial-gradient(ellipse 55% 42% at 96% 4%, rgba(232, 210, 255, 0.42), transparent 52%),
+        radial-gradient(ellipse 48% 36% at 70% 100%, rgba(196, 236, 220, 0.38), transparent 55%),
+        linear-gradient(180deg, #e7eef4 0%, #d7e0e8 42%, #d4dce4 100%);
       min-height: 100vh;
     }
     a { color: var(--accent); font-weight: 650; text-decoration: none; }
@@ -63,6 +65,18 @@
     }
     .lede { margin: 0 0 1rem; color: var(--muted); line-height: 1.55; font-size: 1rem; max-width: 40rem; }
     .cta { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 0.85rem; }
+    .paths { display: grid; gap: 0.5rem; grid-template-columns: 1fr; margin-top: 0.85rem; }
+    .path-card {
+      background: #fff8f3; border: 1px solid #e8d5c4; border-radius: 0.7rem; padding: 0.7rem 0.8rem;
+    }
+    .path-card.rec { border-color: #b7d5e2; background: #eef7fb; }
+    .path-card .tag {
+      margin: 0 0 0.18rem; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent);
+    }
+    .path-card h2 { margin: 0 0 0.2rem; font-size: 1.02rem; }
+    .path-card p { margin: 0; font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
+    .path-card.rec p, .path-card.rec h2 { color: var(--ink); }
     .btn {
       appearance: none; border: 1px solid var(--line); cursor: pointer; font: inherit; font-weight: 800;
       font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase;
@@ -163,7 +177,7 @@
     .shot-step p { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
     .shot-step p strong { color: var(--ink); }
     figure.shot {
-      margin: 0; background: #cfcfcf; border: 1px solid var(--line); border-radius: 0.65rem; overflow: hidden;
+      margin: 0; background: #e8f0f6; border: 1px solid var(--line); border-radius: 0.65rem; overflow: hidden;
     }
     figure.shot img { display: block; width: 100%; height: auto; }
     figure.shot.shot-phone {
@@ -180,11 +194,25 @@
     }
     table.tech th {
       font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
-      background: var(--wash);
+      background: #eef7fb;
     }
     table.tech tr:last-child td { border-bottom: 0; }
     table.tech td:first-child { width: 28%; font-weight: 700; color: var(--ink); }
     table.tech td { color: var(--muted); }
+    .fee {
+      margin-top: 0.85rem; padding: 0.75rem 0.85rem; background: #f4eef9;
+      border: 1px solid #d4c4e6; border-radius: 0.65rem;
+    }
+    .fee h3 {
+      margin: 0 0 0.2rem; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+    }
+    .fee .amt {
+      font-family: "Source Serif 4", Georgia, serif; font-size: 1.35rem; font-weight: 700; margin: 0 0 0.35rem;
+    }
+    .fee .amt span { font-size: 0.72rem; font-weight: 600; color: var(--muted); }
+    .fee p { margin: 0 0 0.35rem; font-size: 0.82rem; color: var(--muted); }
+    .fee p:last-child { margin: 0; }
     .path {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.55rem;
     }
@@ -192,6 +220,10 @@
       background: #fff; border: 1px solid var(--line); border-radius: 0.65rem; padding: 0.8rem;
       min-height: 7.5rem;
     }
+    .path article:nth-child(1) { background: #eef7fb; border-color: #b7d5e2; }
+    .path article:nth-child(2) { background: #eef6f1; border-color: #b5d0c0; }
+    .path article:nth-child(3) { background: #f8f3e9; border-color: #e0cfaa; }
+    .path article:nth-child(4) { background: #f4eef9; border-color: #d4c4e6; }
     .path strong {
       display: block; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
       color: var(--accent); margin-bottom: 0.35rem;
@@ -231,14 +263,26 @@
           and demographics sync later by MRN. This page is a <strong>synthetic sandbox</strong> of that intake UX.
         </p>
         <div class="cta">
-          <a class="btn btn-primary" href="#try">Try the intake form</a>
+          <a class="btn btn-primary" href="#try">Try Add cases</a>
           <a class="btn btn-ghost" href="docs/Prism-Provider-Guide.pdf">Provider guide PDF</a>
           <a class="btn btn-ghost" href="docs/HIPAA-AND-SECURITY.md">HIPAA &amp; security</a>
         </div>
         <p class="meta">
-          Live product URL for practices: <code>prism.clearbillingservices.com</code>
+          Live product: <code>prism.clearbillingservices.com</code>
           (invite-only; not this public demo). Screenshots below use fake names and numbers only.
         </p>
+        <div class="paths">
+          <div class="path-card rec">
+            <p class="tag">New · recommended</p>
+            <h2>Add cases</h2>
+            <p>Enter each case as you finish it. Fastest path. Demographics can follow later and match by MRN.</p>
+          </div>
+          <div class="path-card">
+            <p class="tag">Classic · still supported</p>
+            <h2>Upload PDF</h2>
+            <p>Charge sheets plus demographic sheets for the whole day, week, or whatever you have. One PDF or several. Either is fine. Through Prism instead of email.</p>
+          </div>
+        </div>
       </div>
 
       <div class="panel" id="try">
@@ -246,7 +290,7 @@
           <strong>Add cases</strong>
           <span>Example Eye Institute · local only</span>
         </div>
-        <p class="demo-note">Nothing leaves your browser. Data is fake. Order: MRN, DOS, Times, facility, surgeon, procedure, diagnosis, additional notes.</p>
+        <p class="demo-note">Same form as the live app. Not a live patient. Fields: MRN, DOS, Times, facility, surgeon, procedure, diagnosis, additional notes.</p>
         <form class="stack" id="intakeForm" autocomplete="off">
           <div class="sec sec-ids">
             <div class="two">
@@ -336,10 +380,8 @@
     </div>
 
     <section class="block" id="screens">
-      <h2>What Prism looks like</h2>
-      <p>
-        Each step, then the screen. Synthetic data, not a live example. Works on phone or computer.
-      </p>
+      <h2>Steps</h2>
+      <p>Each step, then the screen. Works on phone or computer.</p>
       <div class="shots">
         <article class="shot-step">
           <p><strong>1. Sign in</strong> - invited work email + login code. Sessions last 8 hours.</p>
@@ -348,7 +390,7 @@
           </figure>
         </article>
         <article class="shot-step">
-          <p><strong>2. How do you want to work today?</strong> - tap <strong>Add cases</strong> (new, recommended) or <strong>Upload PDF</strong> (classic paper packet). Optional: remember as your default next login.</p>
+          <p><strong>2. How do you want to work today?</strong> - choose <strong>Add cases</strong> (new, recommended) or <strong>Upload PDF</strong> (classic paper packet). Optional: remember as your default next login.</p>
           <figure class="shot">
             <img src="screenshots/04-mode-gate.png" alt="Prism how do you want to work today (desktop screenshot, synthetic)" />
           </figure>
@@ -369,8 +411,7 @@
     </section>
 
     <section class="block" id="flow">
-      <h2>How intake works</h2>
-      <p>Two provider workflows. Both stay inside Prism.</p>
+      <h2>How a day moves</h2>
       <div class="path">
         <article>
           <strong>1 · Access</strong>
@@ -392,51 +433,60 @@
     </section>
 
     <section class="block" id="hipaa">
-      <h2>Privacy &amp; security (live product posture)</h2>
+      <h2>HIPAA requirements → what Prism does live</h2>
       <p>
-        HIPAA does not "certify" apps. What matters is a real program (BAAs, policies, workforce training) plus live technical safeguards.
-        Prism is the transfer channel to Clear Billing Services, Inc. inside that program.
+        HIPAA expects covered entities and their business associates to protect ePHI with administrative, physical, and technical safeguards.
+        Prism is the transfer channel to Clear Billing Services, Inc. Below is each common requirement and the live control that addresses it.
       </p>
       <table class="tech">
         <thead>
-          <tr><th>Control</th><th>What Prism / Clear Billing Services, Inc. runs</th></tr>
+          <tr><th>What HIPAA expects</th><th>What Prism / Clear Billing Services, Inc. runs live</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>Edge Zero Trust</td>
-            <td>Cloudflare Access in front of Prism. Uninvited visitors never reach the app UI.</td>
+            <td>Unique user identity</td>
+            <td>Cloudflare Access in front of Prism. Invited work email only + single-use login code. No shared office password.</td>
           </tr>
           <tr>
-            <td>Allowlisted identity</td>
-            <td>Practice emails must be invited before a login code is issued. No shared office password. Offboarding removes the email.</td>
+            <td>Workforce access management</td>
+            <td>Allowlisted identity. Unknown addresses never reach the app. Offboarding removes that email from the invite list.</td>
           </tr>
           <tr>
-            <td>Time-boxed sessions</td>
-            <td>Access sessions last 8 hours, then a fresh code is required. Out clears the Access session.</td>
+            <td>Automatic logoff / session limits</td>
+            <td>Sessions last 8 hours, then a fresh code is required. Out clears the session immediately.</td>
           </tr>
           <tr>
             <td>Encrypted transport</td>
             <td>HTTPS with HSTS. Cloudflare Tunnel ingress. App not port-forwarded on the public internet or left open on an office LAN.</td>
           </tr>
           <tr>
-            <td>Browser hardening</td>
-            <td>Security headers (frame deny, nosniff, referrer policy, content-security posture).</td>
+            <td>Guard against unauthorized viewing</td>
+            <td>Browser hardening with security headers that reduce clickjacking and drive-by embedding risk.</td>
           </tr>
           <tr>
-            <td>PHI hygiene</td>
-            <td>Cases/PDFs go to Prism’s vault. Confirmation emails carry no PHI. Charts are not offered as downloads to personal devices.</td>
+            <td>Protect ePHI in storage</td>
+            <td>Cases and PDFs go into Prism's vault. Confirmation emails carry no PHI. No email, text, or shared Drive for charts.</td>
           </tr>
           <tr>
-            <td>Audit &amp; backups</td>
-            <td>Sign-in and intake activity logged. Routine backups on the dedicated host path at Clear Billing Services, Inc.</td>
+            <td>Audit controls and recoverable backups</td>
+            <td>Sign-in and intake activity are logged. Routine backups on the dedicated host path at Clear Billing Services, Inc. (power, uplink, and backup covered in the fee).</td>
           </tr>
         </tbody>
       </table>
-      <p style="margin:0.9rem 0 0">
-        Full write-up:
-        <a href="docs/HIPAA-AND-SECURITY.md">docs/HIPAA-AND-SECURITY.md</a>
-        · Provider PDF:
-        <a href="docs/Prism-Provider-Guide.pdf">docs/Prism-Provider-Guide.pdf</a>
+      <section class="fee">
+        <h3>Why $49 / month</h3>
+        <div class="amt">$49 <span>/ month</span></div>
+        <p class="compare">
+          Similar secure-transfer stacks with identity, hosting, audit, and support commonly land in the $200-$800+ / month range.
+        </p>
+        <p>
+          Covers the Prism app, secure login, PHI screen, maintenance, dedicated hosting, power, uplink, and backups.
+        </p>
+      </section>
+      <p style="margin:0.85rem 0 0; font-size:0.9rem;">
+        <strong>Questions?</strong>
+        Email <a href="mailto:admin@clearbillingservices.com">admin@clearbillingservices.com</a>
+        · Full write-up: <a href="docs/HIPAA-AND-SECURITY.md">docs/HIPAA-AND-SECURITY.md</a>
       </p>
     </section>
 
