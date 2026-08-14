@@ -8,7 +8,7 @@ This document describes the **live product posture** for Prism. The public GitHu
 
 | Control | Clear Billing |
 | --- | --- |
-| Business Associate Agreements | BAAs with practices and applicable vendors |
+| Business Associate Agreements | BAA with the practice and applicable vendors |
 | Written policies | Access control, breach notification, remote device rules |
 | Workforce training | Ops + providers trained; acknowledgments on file |
 | Unique identities | Named invited emails only (no shared logins) |
@@ -25,7 +25,6 @@ This document describes the **live product posture** for Prism. The public GitHu
 | Network posture | App not port-forwarded publicly; not left open on an office LAN |
 | Browser hardening | Security headers (frame deny, nosniff, referrer, CSP posture) |
 | PHI acknowledgment | Blocking PHI screen before use; acknowledgment stored |
-| Practice separation | Each practice only sees its own cases and uploads |
 | PHI hygiene | Vault storage; confirmation emails carry **no PHI**; no chart download back to personal devices |
 | Audit & backups | Sign-in / intake logging; routine backups on Clear Billing’s dedicated host path |
 
@@ -35,7 +34,7 @@ This document describes the **live product posture** for Prism. The public GitHu
 | --- | --- | --- |
 | Email PDFs / text photos | PHI in inboxes, forwarding, weak audit | Gated portal + allowlisted users + vault |
 | Shared office password | No identity, hard offboarding | Per-person invited email + Access codes |
-| Generic Drive / form links | Broad links, weak BA posture | Zero Trust edge + practice-scoped vault |
+| Generic Drive / form links | Broad links, weak BA posture | Zero Trust edge + Prism vault |
 | Open cloud app with password only | Public surface, stuffing risk | Cloudflare Access first, then app session |
 
 ## What we do not claim
