@@ -18,11 +18,13 @@ Or open [`index.html`](./index.html) locally.
 4. **Or Upload PDF** (classic) for charge sheets plus demographic sheets for the whole day, week, or whatever you have. One PDF or several. Either is fine. Through Prism instead of email.
 5. **Demographics sync later by MRN** so case capture does not wait on face sheets.
 
-Production URL for invited practices: `https://prism.clearbillingservices.com` (not this public demo).
+**$49 / month.** Covers the Prism app, secure login, PHI screen, maintenance, dedicated hosting, power, uplink, and backups.
+
+Production URL: `https://prism.clearbillingservices.com` (not this public demo).
 
 ## Screenshots
 
-Each step, then the screen. Synthetic data, not live examples. Order: sign in → work-today chooser → Add cases → Upload PDF.
+Each step, then the screen. Synthetic data, not live examples. Sign in, then How do you want to work today, then Add cases, then Upload PDF.
 
 | | |
 |---|---|
@@ -36,7 +38,7 @@ Each step, then the screen. Synthetic data, not live examples. Order: sign in �
 
 ## UL / LL
 
-Lid procedures. Chips are labeled **UL** / **LL**. Add procedure is for anything else. ASA is derived in the live app from the procedure (not typed in).
+Lid procedures. Chips are labeled **UL** / **LL**. Add procedure is for anything else.
 
 ## Pair with Command Center (portfolio)
 

@@ -32,7 +32,7 @@ This document describes the **live product posture** for Prism. The public GitHu
 
 | Approach practices still use | Typical gap | Prism |
 | --- | --- | --- |
-| Email PDFs / text photos | PHI in inboxes, forwarding, weak audit | Gated portal + allowlisted users + vault |
+| Email PDFs / text photos | PHI in inboxes, forwarding, weak audit | Prism portal + allowlisted users + vault |
 | Shared office password | No identity, hard offboarding | Per-person invited email + Access codes |
 | Generic Drive / form links | Broad links, weak BA posture | Zero Trust edge + Prism vault |
 | Open cloud app with password only | Public surface, stuffing risk | Cloudflare Access first, then app session |
