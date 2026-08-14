@@ -96,7 +96,15 @@
     .sec-place { background: color-mix(in srgb, #d9ebe0 55%, #fff); border-color: #b5d0c0; }
     .sec-eye { background: color-mix(in srgb, #f3e6cf 50%, #fff); border-color: #e0cfaa; }
     .sec-procs { background: color-mix(in srgb, #e4e9f0 55%, #fff); border-color: #c5ced9; }
-    .sec-codes { background: color-mix(in srgb, #ebe4dc 45%, #fff); border-color: #d6c7b6; }
+    .sec-codes, .sec-dx { background: color-mix(in srgb, #ebe4dc 45%, #fff); border-color: #d6c7b6; }
+    .sec-notes { background: color-mix(in srgb, #ececec 50%, #fff); border-color: #d4d4d4; }
+    .sec-label {
+      margin: 0; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.07em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .chip.add { border-style: dashed; color: var(--muted); }
+    .chip.add.on { border-style: solid; color: #fff; }
+    .extra-field[hidden] { display: none !important; }
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
     label.field {
       display: flex; flex-direction: column; gap: 0.2rem;
@@ -150,16 +158,18 @@
       margin: 0 0 0.45rem; font-family: "Source Serif 4", Georgia, serif; font-size: 1.35rem;
     }
     section.block > p { margin: 0 0 0.9rem; color: var(--muted); line-height: 1.5; }
-    .shots { display: grid; grid-template-columns: 1fr; gap: 0.85rem; }
+    .shots { display: grid; grid-template-columns: 1fr; gap: 1.15rem; }
+    .shot-step { display: grid; gap: 0.45rem; }
+    .shot-step p { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
+    .shot-step p strong { color: var(--ink); }
     figure.shot {
       margin: 0; background: #cfcfcf; border: 1px solid var(--line); border-radius: 0.65rem; overflow: hidden;
     }
     figure.shot img { display: block; width: 100%; height: auto; }
-    figcaption {
-      padding: 0.55rem 0.7rem; background: #fff; font-size: 0.8rem; color: var(--muted); line-height: 1.4;
-      border-top: 1px solid var(--line);
+    figure.shot.shot-phone {
+      max-width: 420px; margin: 0 auto; background: transparent; border: 0; border-radius: 0;
     }
-    figcaption strong { color: var(--ink); }
+    figure.shot.shot-phone img { background: transparent; }
     table.tech {
       width: 100%; border-collapse: collapse; font-size: 0.84rem; background: #fff;
       border: 1px solid var(--line); border-radius: 0.55rem; overflow: hidden;
@@ -233,11 +243,11 @@
 
       <div class="panel" id="try">
         <div class="panel-head">
-          <strong>Add Case</strong>
-          <span>Interactive · local only</span>
+          <strong>Add cases</strong>
+          <span>Example Eye Institute · local only</span>
         </div>
-        <p class="demo-note">Nothing leaves your browser. Data is fake. Order: MRN → DOS → Times (optional) → Facility → Surgeon → eye/procedure → ASA/DX → notes.</p>
-        <form class="stack" id="intakeForm">
+        <p class="demo-note">Nothing leaves your browser. Data is fake. Order: MRN, DOS, Times, facility, surgeon, procedure, diagnosis, additional notes.</p>
+        <form class="stack" id="intakeForm" autocomplete="off">
           <div class="sec sec-ids">
             <div class="two">
               <label class="field">MRN
@@ -265,13 +275,13 @@
           <div class="sec sec-place two">
             <label class="field">Facility
               <select id="facility">
-                <option>Example Surgery Center</option>
-                <option>North ASC</option>
+                <option>Example Eye Institute</option>
+                <option>Example ASC</option>
               </select>
             </label>
             <label class="field">Surgeon
               <select id="surgeon">
-                <option>Example Provider</option>
+                <option>Example Surgeon, MD</option>
                 <option>Sample, Jane MD</option>
               </select>
             </label>
@@ -285,21 +295,34 @@
             <input class="split-mins" id="splitMins" placeholder="min" disabled />
           </div>
 
-          <div class="sec sec-procs chips" id="procChips">
-            <button type="button" class="chip on" data-proc="cataract">Cataract</button>
-            <button type="button" class="chip" data-proc="istent">iStent</button>
-            <button type="button" class="chip" data-proc="upper" title="Upper lid">Upper lid</button>
-            <button type="button" class="chip" data-proc="lower" title="Lower lid">Lower lid</button>
-            <button type="button" class="chip" data-proc="glaucoma">Glaucoma</button>
+          <div class="sec sec-procs">
+            <p class="sec-label">Procedure</p>
+            <div class="chips" id="procChips">
+              <button type="button" class="chip on" data-proc="cataract" aria-pressed="true">Cataract</button>
+              <button type="button" class="chip" data-proc="istent" aria-pressed="false">iStent</button>
+              <button type="button" class="chip" data-proc="ul" title="Upper lid" aria-pressed="false">UL</button>
+              <button type="button" class="chip" data-proc="ll" title="Lower lid" aria-pressed="false">LL</button>
+              <button type="button" class="chip add" id="addProcBtn" aria-pressed="false">Add procedure</button>
+            </div>
+            <label class="field extra-field" id="addProcWrap" hidden>Other procedure
+              <input id="addProc" placeholder="Type procedure" />
+            </label>
           </div>
 
-          <div class="sec sec-codes">
-            <div class="two">
-              <label class="field">ASA<input id="asa" placeholder="Optional" /></label>
-              <label class="field">DX<input id="dx" placeholder="Optional" /></label>
+          <div class="sec sec-dx">
+            <p class="sec-label">Diagnosis</p>
+            <div class="chips" id="dxChips">
+              <button type="button" class="chip" data-dx="glaucoma" aria-pressed="false">Glaucoma</button>
+              <button type="button" class="chip add" id="addDxBtn" aria-pressed="false">Add DX</button>
             </div>
+            <label class="field extra-field" id="addDxWrap" hidden>Other diagnosis
+              <input id="addDx" placeholder="Type diagnosis" />
+            </label>
+          </div>
+
+          <div class="sec sec-notes">
             <label class="field">Additional notes
-              <textarea id="notes" rows="1" placeholder="Optional"></textarea>
+              <textarea id="notes" rows="2" placeholder="Anything else for the office"></textarea>
             </label>
           </div>
 
@@ -315,33 +338,33 @@
     <section class="block" id="screens">
       <h2>What Prism looks like</h2>
       <p>
-        Desktop screenshots · synthetic data, not a live example. Mobile is the same flows in a taller layout.
-        After sign-in you choose a path: <strong>Add cases</strong> is the new recommended feature;
-        <strong>Upload PDF</strong> is the classic paper packet, now through Prism’s secure channel instead of email.
+        Each step, then the screen. Synthetic data, not a live example. Same taps on a phone or clicks on a computer.
       </p>
       <div class="shots">
-        <figure class="shot">
-          <img src="screenshots/01-access-login.png" alt="Prism Access login (desktop screenshot, synthetic)" />
-          <figcaption><strong>1. Sign in</strong> - invited work email + login code via Cloudflare Access. Sessions last 8 hours. (desktop screenshot · synthetic data, not a live example)</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="screenshots/04-mode-gate.png" alt="Prism how do you want to work today (desktop screenshot, synthetic)" />
-          <figcaption>
-            <strong>2. How do you want to work today?</strong> -
-            <strong>Add cases</strong> (new: enter as you go) or
-            <strong>Upload PDF</strong> (classic packet through Prism’s secure channel, not email).
-            Optional: remember as your default next login.
-            (desktop screenshot · synthetic data, not a live example)
-          </figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="screenshots/02-add-case.png" alt="Prism Add Case form (desktop screenshot, synthetic)" />
-          <figcaption><strong>3. Add cases (new)</strong> - MRN, DOS, Facility, Surgeon, eye/procedure chips, ASA/DX, short notes. Times stays collapsed until needed. (desktop screenshot · synthetic data, not a live example)</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="screenshots/03-upload-pdf.png" alt="Prism Upload PDF (desktop screenshot, synthetic)" />
-          <figcaption><strong>4. Upload PDF (classic, secure channel)</strong> - same bulk handwritten packet as before, now inside Prism instead of email. (desktop screenshot · synthetic data, not a live example)</figcaption>
-        </figure>
+        <article class="shot-step">
+          <p><strong>1. Sign in</strong> - invited work email + login code. Sessions last 8 hours.</p>
+          <figure class="shot">
+            <img src="screenshots/01-access-login.png" alt="Prism Access login (desktop screenshot, synthetic)" />
+          </figure>
+        </article>
+        <article class="shot-step">
+          <p><strong>2. How do you want to work today?</strong> - tap <strong>Add cases</strong> (new, recommended) or <strong>Upload PDF</strong> (classic paper packet). Optional: remember as your default next login.</p>
+          <figure class="shot">
+            <img src="screenshots/04-mode-gate.png" alt="Prism how do you want to work today (desktop screenshot, synthetic)" />
+          </figure>
+        </article>
+        <article class="shot-step">
+          <p><strong>3. Add cases</strong> - MRN, DOS, Times, facility, surgeon, procedure (Cataract, iStent, UL, LL, or Add procedure), diagnosis (Glaucoma, or Add DX), additional notes last. Demographics can follow later and match by MRN.</p>
+          <figure class="shot shot-phone">
+            <img src="screenshots/02-add-case-phone.png" alt="Prism Add cases on a phone (synthetic)" />
+          </figure>
+        </article>
+        <article class="shot-step">
+          <p><strong>4. Upload PDF</strong> - charge sheets plus demographic sheets for the whole day, week, or whatever you have. One PDF or several. Either is fine. Through Prism instead of email.</p>
+          <figure class="shot">
+            <img src="screenshots/03-upload-pdf.png" alt="Prism Upload PDF (desktop screenshot, synthetic)" />
+          </figure>
+        </article>
       </div>
     </section>
 
@@ -359,7 +382,7 @@
         </article>
         <article>
           <strong>3 · Capture</strong>
-          <p><strong>Add cases</strong> (new) through the day, or <strong>Upload PDF</strong> (classic packet through Prism’s secure channel, not email). Optional laser/OR times live under a collapsed Times control.</p>
+          <p><strong>Add cases</strong> through the day, or <strong>Upload PDF</strong> for charge sheets plus demographic sheets (day, week, one file or several).</p>
         </article>
         <article>
           <strong>4 · Match by MRN</strong>
@@ -444,67 +467,148 @@
   </div>
 
   <script>
-    const $ = (id) => document.getElementById(id);
-    const state = { eye: "OD", mac: true, split: false, procs: new Set(["cataract"]) };
+    (function () {
+      const $ = (id) => document.getElementById(id);
+      const form = $("intakeForm");
+      if (!form) return;
 
-    function syncChips() {
+      const state = {
+        eye: "OD",
+        mac: true,
+        split: false,
+        procs: new Set(["cataract"]),
+        addProc: false,
+        dx: new Set(),
+        addDx: false
+      };
+
+      function press(el, on) {
+        if (!el) return;
+        el.classList.toggle("on", on);
+        el.setAttribute("aria-pressed", on ? "true" : "false");
+      }
+      function show(el, on) {
+        if (!el) return;
+        el.hidden = !on;
+      }
+      function syncChips() {
+        document.querySelectorAll("#eyeChips [data-eye]").forEach((b) => {
+          press(b, b.dataset.eye === state.eye);
+        });
+        press($("macBtn"), state.mac);
+        press($("splitBtn"), state.split);
+        const mins = $("splitMins");
+        if (mins) mins.disabled = !state.split;
+        document.querySelectorAll("#procChips [data-proc]").forEach((b) => {
+          press(b, state.procs.has(b.dataset.proc));
+        });
+        press($("addProcBtn"), state.addProc);
+        show($("addProcWrap"), state.addProc);
+        document.querySelectorAll("#dxChips [data-dx]").forEach((b) => {
+          press(b, state.dx.has(b.dataset.dx));
+        });
+        press($("addDxBtn"), state.addDx);
+        show($("addDxWrap"), state.addDx);
+      }
+
       document.querySelectorAll("#eyeChips [data-eye]").forEach((b) => {
-        b.classList.toggle("on", b.dataset.eye === state.eye);
+        b.addEventListener("click", () => { state.eye = b.dataset.eye; syncChips(); });
       });
-      $("macBtn").classList.toggle("on", state.mac);
-      $("splitBtn").classList.toggle("on", state.split);
-      $("splitMins").disabled = !state.split;
+      const macBtn = $("macBtn");
+      if (macBtn) macBtn.addEventListener("click", () => { state.mac = !state.mac; syncChips(); });
+      const splitBtn = $("splitBtn");
+      if (splitBtn) {
+        splitBtn.addEventListener("click", () => {
+          state.split = !state.split;
+          const mins = $("splitMins");
+          if (!state.split && mins) mins.value = "";
+          syncChips();
+        });
+      }
       document.querySelectorAll("#procChips [data-proc]").forEach((b) => {
-        b.classList.toggle("on", state.procs.has(b.dataset.proc));
+        b.addEventListener("click", () => {
+          const key = b.dataset.proc;
+          if (state.procs.has(key)) state.procs.delete(key);
+          else state.procs.add(key);
+          syncChips();
+        });
       });
-    }
-
-    document.querySelectorAll("#eyeChips [data-eye]").forEach((b) => {
-      b.addEventListener("click", () => { state.eye = b.dataset.eye; syncChips(); });
-    });
-    $("macBtn").addEventListener("click", () => { state.mac = !state.mac; syncChips(); });
-    $("splitBtn").addEventListener("click", () => {
-      state.split = !state.split;
-      if (!state.split) $("splitMins").value = "";
-      syncChips();
-    });
-    document.querySelectorAll("#procChips [data-proc]").forEach((b) => {
-      b.addEventListener("click", () => {
-        const key = b.dataset.proc;
-        if (state.procs.has(key)) state.procs.delete(key);
-        else state.procs.add(key);
-        syncChips();
+      const addProcBtn = $("addProcBtn");
+      if (addProcBtn) {
+        addProcBtn.addEventListener("click", () => {
+          state.addProc = !state.addProc;
+          if (!state.addProc) {
+            const n = $("addProc");
+            if (n) n.value = "";
+          }
+          syncChips();
+        });
+      }
+      document.querySelectorAll("#dxChips [data-dx]").forEach((b) => {
+        b.addEventListener("click", () => {
+          const key = b.dataset.dx;
+          if (state.dx.has(key)) state.dx.delete(key);
+          else state.dx.add(key);
+          syncChips();
+        });
       });
-    });
+      const addDxBtn = $("addDxBtn");
+      if (addDxBtn) {
+        addDxBtn.addEventListener("click", () => {
+          state.addDx = !state.addDx;
+          if (!state.addDx) {
+            const n = $("addDx");
+            if (n) n.value = "";
+          }
+          syncChips();
+        });
+      }
 
-    $("intakeForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const toast = $("toast");
-      toast.textContent = `Case captured locally (demo). MRN ${$("mrn").value.trim() || "-"} · ${state.eye}${state.mac ? " · MAC" : ""} ready for demographic match.`;
-      toast.classList.add("show");
-    });
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const toast = $("toast");
+        const mrn = ($("mrn") && $("mrn").value.trim()) || "-";
+        if (toast) {
+          toast.textContent = "Example captured (not sent). MRN " + mrn + " would match a demographic sheet later.";
+          toast.classList.add("show");
+        }
+      });
 
-    $("clearBtn").addEventListener("click", () => {
-      $("mrn").value = "10001";
-      $("dos").value = "2026-01-15";
-      $("asa").value = "";
-      $("dx").value = "";
-      $("notes").value = "";
-      $("laserStart").value = "";
-      $("laserStop").value = "";
-      $("orStart").value = "";
-      $("orStop").value = "";
-      $("timesMore").open = false;
-      $("splitMins").value = "";
-      state.eye = "OD";
-      state.mac = true;
-      state.split = false;
-      state.procs = new Set(["cataract"]);
+      const clearBtn = $("clearBtn");
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+          const setVal = (id, v) => { const n = $(id); if (n) n.value = v; };
+          setVal("mrn", "10001");
+          setVal("dos", "2026-01-15");
+          setVal("addProc", "");
+          setVal("addDx", "");
+          setVal("notes", "");
+          setVal("laserStart", "");
+          setVal("laserStop", "");
+          setVal("orStart", "");
+          setVal("orStop", "");
+          setVal("splitMins", "");
+          const times = $("timesMore");
+          if (times) times.open = false;
+          const facility = $("facility");
+          const surgeon = $("surgeon");
+          if (facility) facility.selectedIndex = 0;
+          if (surgeon) surgeon.selectedIndex = 0;
+          state.eye = "OD";
+          state.mac = true;
+          state.split = false;
+          state.procs = new Set(["cataract"]);
+          state.addProc = false;
+          state.dx = new Set();
+          state.addDx = false;
+          syncChips();
+          const toast = $("toast");
+          if (toast) toast.classList.remove("show");
+        });
+      }
+
       syncChips();
-      $("toast").classList.remove("show");
-    });
-
-    syncChips();
+    })();
   </script>
 </body>
 </html>

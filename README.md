@@ -2,7 +2,7 @@
 
 **Synthetic data only. Not for clinical use. Not connected to production PHI.**
 
-Interactive GitHub Pages demo of **Prism**, Clear Billing’s HIPAA-oriented clinician intake portal for anesthesia practices.
+Interactive GitHub Pages demo of **Prism**, Clear Billing's HIPAA-oriented clinician intake portal for anesthesia practices.
 
 ## Open the demo
 
@@ -14,15 +14,15 @@ Or open [`index.html`](./index.html) locally.
 
 1. **Sign in** with an invited work email + Cloudflare Access login code (8-hour sessions).
 2. **Accept the PHI screen**, then choose **How do you want to work today?**
-3. **Add cases (new, recommended)** through the day (MRN, DOS, facility, surgeon, eye/procedure, optional ASA/DX/notes; Times collapsed until needed).
-4. **Or Upload PDF (classic)** for a bulk handwritten packet - same old paper workflow, now through Prism’s secure channel instead of email.
+3. **Add cases** (new, recommended) through the day: MRN, DOS, Times, facility, surgeon, procedure (Cataract, iStent, UL, LL, or Add procedure), diagnosis (Glaucoma, or Add DX), additional notes last.
+4. **Or Upload PDF** (classic) for charge sheets plus demographic sheets for the whole day, week, or whatever you have. One PDF or several. Either is fine. Through Prism instead of email.
 5. **Demographics sync later by MRN** so case capture does not wait on face sheets.
 
 Production URL for invited practices: `https://prism.clearbillingservices.com` (not this public demo).
 
 ## Screenshots
 
-Desktop screenshots · synthetic data, not live examples. Order: sign in → work-today chooser → Add cases → Upload PDF.
+Each step, then the screen. Synthetic data, not live examples. Order: sign in → work-today chooser → Add cases → Upload PDF.
 
 | | |
 |---|---|
@@ -36,7 +36,7 @@ Desktop screenshots · synthetic data, not live examples. Order: sign in → wor
 
 ## UL / LL
 
-In the live form these are labeled **Upper lid** / **Lower lid** (lid procedures).
+Lid procedures. Chips are labeled **UL** / **LL**. Add procedure is for anything else. ASA is derived in the live app from the procedure (not typed in).
 
 ## Pair with Command Center (portfolio)
 
