@@ -19,7 +19,7 @@ This document describes the **live product posture** for Prism. The public GitHu
 | Control | What runs |
 | --- | --- |
 | Edge Zero Trust | Cloudflare Access in front of Prism before any app UI |
-| Allowlisted identity | Practice emails must be invited before a login code is issued |
+| Allowlisted identity | Practice emails must be invited. Prism emails a single-use MFA login code |
 | Time-boxed sessions | Access sessions last **8 hours**; Out clears the Access session |
 | Encrypted transport | HTTPS + HSTS; Cloudflare Tunnel ingress |
 | Network posture | App not port-forwarded publicly; not left open on an office LAN |

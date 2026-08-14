@@ -104,14 +104,8 @@
     .stack { display: grid; gap: 0.55rem; }
     .sec {
       display: grid; gap: 0.4rem; padding: 0.5rem 0.55rem; border-radius: 0.55rem;
-      border: 1px solid transparent;
+      border: 1px solid rgba(15,23,42,0.08); background: rgba(255,255,255,0.55);
     }
-    .sec-ids { background: color-mix(in srgb, #cfe8f3 55%, #fff); border-color: #b7d5e2; }
-    .sec-place { background: color-mix(in srgb, #d9ebe0 55%, #fff); border-color: #b5d0c0; }
-    .sec-eye { background: color-mix(in srgb, #f3e6cf 50%, #fff); border-color: #e0cfaa; }
-    .sec-procs { background: color-mix(in srgb, #e4e9f0 55%, #fff); border-color: #c5ced9; }
-    .sec-codes, .sec-dx { background: color-mix(in srgb, #ebe4dc 45%, #fff); border-color: #d6c7b6; }
-    .sec-notes { background: color-mix(in srgb, #ececec 50%, #fff); border-color: #d4d4d4; }
     .sec-label {
       margin: 0; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.07em;
       text-transform: uppercase; color: var(--muted);
@@ -173,11 +167,18 @@
     }
     section.block > p { margin: 0 0 0.9rem; color: var(--muted); line-height: 1.5; }
     .shots { display: grid; grid-template-columns: 1fr; gap: 1.15rem; }
-    .shot-step { display: grid; gap: 0.45rem; }
-    .shot-step p { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
-    .shot-step p strong { color: var(--ink); }
+    .shot-step { display: grid; gap: 0.5rem; }
+    .shot-copy {
+      background: #fff; border: 1px solid var(--line); border-radius: 0.55rem; padding: 0.55rem 0.7rem;
+    }
+    .shot-copy.tone-add { background: #eef7fb; border-color: #b7d5e2; }
+    .shot-copy.tone-upload { background: #fff8f3; border-color: #e8d5c4; }
+    .shot-copy h3 {
+      margin: 0 0 0.22rem; font-size: 1.02rem; font-weight: 800; color: var(--ink);
+    }
+    .shot-copy p { margin: 0; font-size: 0.86rem; color: var(--muted); line-height: 1.45; }
     figure.shot {
-      margin: 0; background: #e8f0f6; border: 1px solid var(--line); border-radius: 0.65rem; overflow: hidden;
+      margin: 0; background: var(--wash); border: 1px solid var(--line); border-radius: 0.65rem; overflow: hidden;
     }
     figure.shot img { display: block; width: 100%; height: auto; }
     figure.shot.shot-phone {
@@ -194,14 +195,14 @@
     }
     table.tech th {
       font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
-      background: #eef7fb;
+      background: var(--wash);
     }
     table.tech tr:last-child td { border-bottom: 0; }
     table.tech td:first-child { width: 28%; font-weight: 700; color: var(--ink); }
     table.tech td { color: var(--muted); }
     .fee {
-      margin-top: 0.85rem; padding: 0.75rem 0.85rem; background: #f4eef9;
-      border: 1px solid #d4c4e6; border-radius: 0.65rem;
+      margin-top: 0.85rem; padding: 0.75rem 0.85rem; background: #fff;
+      border: 1px solid var(--line); border-radius: 0.65rem;
     }
     .fee h3 {
       margin: 0 0 0.2rem; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.1em;
@@ -220,10 +221,6 @@
       background: #fff; border: 1px solid var(--line); border-radius: 0.65rem; padding: 0.8rem;
       min-height: 7.5rem;
     }
-    .path article:nth-child(1) { background: #eef7fb; border-color: #b7d5e2; }
-    .path article:nth-child(2) { background: #eef6f1; border-color: #b5d0c0; }
-    .path article:nth-child(3) { background: #f8f3e9; border-color: #e0cfaa; }
-    .path article:nth-child(4) { background: #f4eef9; border-color: #d4c4e6; }
     .path strong {
       display: block; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
       color: var(--accent); margin-bottom: 0.35rem;
@@ -275,7 +272,7 @@
           <div class="path-card rec">
             <p class="tag">New · recommended</p>
             <h2>Add cases</h2>
-            <p>Enter each case as you finish it. Fastest path. Demographics can follow later and match by MRN.</p>
+            <p>Enter each case as you finish it, on phone, tablet, or computer. Fastest path. Demographics can follow later and match by MRN or DOS.</p>
           </div>
           <div class="path-card">
             <p class="tag">Classic · still supported</p>
@@ -380,29 +377,39 @@
     </div>
 
     <section class="block" id="screens">
-      <h2>Steps</h2>
-      <p>Each step, then the screen. Works on phone or computer.</p>
       <div class="shots">
         <article class="shot-step">
-          <p><strong>1. Sign in</strong> - invited work email + login code. Sessions last 8 hours.</p>
+          <div class="shot-copy">
+            <h3>Step 1 · Sign in</h3>
+            <p>Use your invited work email. Prism emails a single-use MFA login code. Accept the PHI screen. Sessions last 8 hours.</p>
+          </div>
           <figure class="shot">
             <img src="screenshots/01-access-login.png" alt="Prism Access login (desktop screenshot, synthetic)" />
           </figure>
         </article>
         <article class="shot-step">
-          <p><strong>2. How do you want to work today?</strong> - choose <strong>Add cases</strong> (new, recommended) or <strong>Upload PDF</strong> (classic paper packet). Optional: remember as your default next login.</p>
+          <div class="shot-copy">
+            <h3>Step 2 · How do you want to work today?</h3>
+            <p>Choose <strong>Add cases</strong> (new, recommended) or <strong>Upload PDF</strong> (classic paper packet). Optional: remember as your default next login.</p>
+          </div>
           <figure class="shot">
             <img src="screenshots/04-mode-gate.png" alt="Prism how do you want to work today (desktop screenshot, synthetic)" />
           </figure>
         </article>
         <article class="shot-step">
-          <p><strong>3. Add cases</strong> - MRN, DOS, Times, facility, surgeon, procedure (Cataract, iStent, UL, LL, or Add procedure), diagnosis (Glaucoma, or Add DX), additional notes last. Demographics can follow later and match by MRN.</p>
+          <div class="shot-copy tone-add">
+            <h3>Step 3 · Add cases</h3>
+            <p>Custom-built to your practice and workflow. Most-used procedures, diagnoses, and the rest of the form. Enter each case as you finish it. Demographics can follow later and match by MRN or DOS.</p>
+          </div>
           <figure class="shot shot-phone">
             <img src="screenshots/02-add-case-phone.png" alt="Prism Add cases on a phone (synthetic)" />
           </figure>
         </article>
         <article class="shot-step">
-          <p><strong>4. Upload PDF</strong> - charge sheets plus demographic sheets for the whole day, week, or whatever you have. One PDF or several. Either is fine. Through Prism instead of email.</p>
+          <div class="shot-copy tone-upload">
+            <h3>Step 4 · Upload PDF</h3>
+            <p>Charge sheets plus demographic sheets for the whole day, week, or whatever you have. One PDF or several. Either is fine. Through Prism instead of email.</p>
+          </div>
           <figure class="shot">
             <img src="screenshots/03-upload-pdf.png" alt="Prism Upload PDF (desktop screenshot, synthetic)" />
           </figure>
@@ -415,7 +422,7 @@
       <div class="path">
         <article>
           <strong>1 · Access</strong>
-          <p>Cloudflare Access allowlists the practice email. A single-use login code is emailed. Uninvited addresses never reach the app.</p>
+          <p>Allowlisted work email. Prism emails a single-use MFA login code.</p>
         </article>
         <article>
           <strong>2 · PHI screen</strong>
@@ -423,11 +430,11 @@
         </article>
         <article>
           <strong>3 · Capture</strong>
-          <p><strong>Add cases</strong> through the day, or <strong>Upload PDF</strong> for charge sheets plus demographic sheets (day, week, one file or several).</p>
+          <p>Add case details as you work, quickly, on phone, tablet, or computer. Or Upload PDF.</p>
         </article>
         <article>
-          <strong>4 · Match by MRN</strong>
-          <p>Demographics can arrive later. Sheets with patient-sticker MRNs sync to open cases for that DOS.</p>
+          <strong>4 · Match</strong>
+          <p>Either path can sync to that MRN or DOS. Demographic sheets can arrive later.</p>
         </article>
       </div>
     </section>
@@ -445,11 +452,11 @@
         <tbody>
           <tr>
             <td>Unique user identity</td>
-            <td>Cloudflare Access in front of Prism. Invited work email only + single-use login code. No shared office password.</td>
+            <td>Cloudflare Access in front of Prism. Invited work email only. Prism emails a single-use MFA login code. No shared office password.</td>
           </tr>
           <tr>
             <td>Workforce access management</td>
-            <td>Allowlisted identity. Unknown addresses never reach the app. Offboarding removes that email from the invite list.</td>
+            <td>Allowlisted identity. Offboarding removes that email from the invite list.</td>
           </tr>
           <tr>
             <td>Automatic logoff / session limits</td>

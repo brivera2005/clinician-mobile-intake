@@ -12,11 +12,11 @@ Or open [`index.html`](./index.html) locally.
 
 ## What Prism does
 
-1. **Sign in** with an invited work email + Cloudflare Access login code (8-hour sessions).
+1. **Sign in** with an invited work email. Prism emails a single-use MFA login code (8-hour sessions).
 2. **Accept the PHI screen**, then choose **How do you want to work today?**
-3. **Add cases** (new, recommended) through the day: MRN, DOS, Times, facility, surgeon, procedure (Cataract, iStent, UL, LL, or Add procedure), diagnosis (Glaucoma, or Add DX), additional notes last.
+3. **Add cases** (new, recommended): custom-built to your practice and workflow (most-used procedures, diagnoses, and the rest of the form). Enter each case as you finish it, on phone, tablet, or computer.
 4. **Or Upload PDF** (classic) for charge sheets plus demographic sheets for the whole day, week, or whatever you have. One PDF or several. Either is fine. Through Prism instead of email.
-5. **Demographics sync later by MRN** so case capture does not wait on face sheets.
+5. Either path can **sync to that MRN or DOS**. Demographic sheets can arrive later.
 
 **$49 / month.** Covers the Prism app, secure login, PHI screen, maintenance, dedicated hosting, power, uplink, and backups.
 
@@ -24,7 +24,7 @@ Production URL: `https://prism.clearbillingservices.com` (not this public demo).
 
 ## Screenshots
 
-Each step, then the screen. Synthetic data, not live examples. Sign in, then How do you want to work today, then Add cases, then Upload PDF.
+Each screenshot is synthetic, not a live example.
 
 | | |
 |---|---|
