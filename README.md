@@ -13,21 +13,21 @@ Or open [`index.html`](./index.html) locally.
 ## What Prism does
 
 1. **Sign in** with an invited work email + Cloudflare Access login code (8-hour sessions).
-2. **Accept the PHI screen** before working.
-3. **Add Case** through the day (MRN, DOS, facility, surgeon, eye/procedure, optional ASA/DX/notes; Times collapsed until needed).
-4. **Or Upload PDF** for a bulk handwritten packet (charges + demos) instead of email.
+2. **Accept the PHI screen**, then choose **How do you want to work today?**
+3. **Add cases (new, recommended)** through the day (MRN, DOS, facility, surgeon, eye/procedure, optional ASA/DX/notes; Times collapsed until needed).
+4. **Or Upload PDF (classic)** for a bulk handwritten packet - same old paper workflow, now through Prism’s secure channel instead of email.
 5. **Demographics sync later by MRN** so case capture does not wait on face sheets.
 
 Production URL for invited practices: `https://prism.clearbillingservices.com` (not this public demo).
 
 ## Screenshots
 
-Desktop screenshots · synthetic data, not live examples:
+Desktop screenshots · synthetic data, not live examples. Order: sign in → work-today chooser → Add cases → Upload PDF.
 
 | | |
 |---|---|
-| ![Access login](screenshots/01-access-login.png) | ![Mode chooser](screenshots/04-mode-gate.png) |
-| ![Add Case](screenshots/02-add-case.png) | ![Upload PDF](screenshots/03-upload-pdf.png) |
+| ![Access login](screenshots/01-access-login.png) | ![How do you want to work today](screenshots/04-mode-gate.png) |
+| ![Add cases](screenshots/02-add-case.png) | ![Upload PDF](screenshots/03-upload-pdf.png) |
 
 ## Documentation
 
