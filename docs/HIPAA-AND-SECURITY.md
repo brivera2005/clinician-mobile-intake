@@ -1,12 +1,12 @@
 # Prism · HIPAA & security
 
-**Framing:** HIPAA does not "certify" software. What matters is a covered entity / business associate program with BAAs, written policies, workforce training, and live technical safeguards. Clear Billing runs that program. Prism is the practice-to-Clear Billing transfer channel inside it.
+**Framing:** HIPAA does not "certify" software. What matters is a covered entity / business associate program with BAAs, written policies, workforce training, and live technical safeguards. Clear Billing Services, Inc. runs that program. Prism is the transfer channel to Clear Billing Services, Inc. inside it.
 
 This document describes the **live product posture** for Prism. The public GitHub Pages demo is synthetic only and does not process PHI.
 
 ## Organizational / legal
 
-| Control | Clear Billing |
+| Control | Clear Billing Services, Inc. |
 | --- | --- |
 | Business Associate Agreements | BAA with the practice and applicable vendors |
 | Written policies | Access control, breach notification, remote device rules |
@@ -26,7 +26,7 @@ This document describes the **live product posture** for Prism. The public GitHu
 | Browser hardening | Security headers (frame deny, nosniff, referrer, CSP posture) |
 | PHI acknowledgment | Blocking PHI screen before use; acknowledgment stored |
 | PHI hygiene | Vault storage; confirmation emails carry **no PHI**; no chart download back to personal devices |
-| Audit & backups | Sign-in / intake logging; routine backups on Clear Billing’s dedicated host path |
+| Audit & backups | Sign-in / intake logging; routine backups on the dedicated host path at Clear Billing Services, Inc. |
 
 ## Safer than common shortcuts
 
