@@ -215,28 +215,27 @@
     .fee p { margin: 0 0 0.35rem; font-size: 0.82rem; color: var(--muted); }
     .fee p:last-child { margin: 0; }
     .path {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.55rem;
+      display: grid; grid-template-columns: 1fr; gap: 0.32rem;
     }
     .path article {
-      background: #fff; border: 1px solid var(--line); border-radius: 0.65rem; padding: 0.8rem;
-      min-height: 7.5rem;
+      display: grid; grid-template-columns: 6.6rem 1fr; gap: 0.55rem; align-items: baseline;
+      background: #fff; border: 1px solid var(--line); border-radius: 0.55rem; padding: 0.42rem 0.65rem;
     }
     .path strong {
-      display: block; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 0.35rem;
+      margin: 0; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--accent);
     }
-    .path p { margin: 0; font-size: 0.84rem; color: var(--muted); line-height: 1.4; }
+    .path p { margin: 0; font-size: 0.84rem; color: var(--muted); line-height: 1.35; }
     .links { display: flex; flex-wrap: wrap; gap: 0.55rem; }
     footer {
       margin-top: 1.5rem; color: var(--muted); font-size: 0.8rem; line-height: 1.5;
     }
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
-      .path { grid-template-columns: 1fr 1fr; }
       .row-eye { grid-template-columns: 1fr 1fr 1fr; }
     }
     @media (max-width: 560px) {
-      .path { grid-template-columns: 1fr; }
+      .path article { grid-template-columns: 1fr; gap: 0.12rem; }
       .two, .actions { grid-template-columns: 1fr; }
     }
   </style>
@@ -421,20 +420,20 @@
       <h2>How a day moves</h2>
       <div class="path">
         <article>
-          <strong>1 · Access</strong>
-          <p>Allowlisted work email. Prism emails a single-use MFA login code.</p>
+          <strong>1 · Sign in</strong>
+          <p>Invited work email. Prism emails a single-use MFA login code.</p>
         </article>
         <article>
           <strong>2 · PHI screen</strong>
-          <p>Providers accept a PHI security acknowledgment before working. Activity is logged for ops review.</p>
+          <p>Accept the acknowledgment. Activity is logged.</p>
         </article>
         <article>
           <strong>3 · Capture</strong>
-          <p>Add case details as you work, quickly, on phone, tablet, or computer. Or Upload PDF.</p>
+          <p>Add case details as you work on phone, tablet, or computer, or Upload PDF.</p>
         </article>
         <article>
           <strong>4 · Match</strong>
-          <p>Either path can sync to that MRN or DOS. Demographic sheets can arrive later.</p>
+          <p>Syncs to that MRN or DOS. Demographic sheets can arrive later.</p>
         </article>
       </div>
     </section>
