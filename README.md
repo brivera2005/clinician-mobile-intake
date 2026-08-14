@@ -2,7 +2,7 @@
 
 **Synthetic data only. Not for clinical use. Not connected to production PHI.**
 
-Interactive GitHub Pages demo of **Prism**, Clear Billing's HIPAA-oriented clinician intake portal for anesthesia practices.
+Interactive GitHub Pages demo of **Prism**, the HIPAA-oriented clinician intake portal from Clear Billing Services, Inc.
 
 ## Open the demo
 
