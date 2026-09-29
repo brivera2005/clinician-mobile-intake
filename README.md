@@ -12,26 +12,9 @@ Or open [`index.html`](./index.html) locally.
 
 ---
 
-## Why this matters for technical systems / healthcare payments roles
+## What Prism does
 
 Prism is the **secure front door** for clinical charge data: invited clinicians, MFA, PHI acknowledgment, then either structured case entry or PDF upload instead of insecure email.
-
-That maps directly to healthcare payment and enterprise portal work (hosted payment pages, P2PE switchovers, clinic admin onboarding):
-
-| Prism capability | Transferable systems skill |
-|:--|:--|
-| Invited email + single-use MFA | Controlled access without shared passwords |
-| Explicit PHI screen before work | Consent / acknowledgment gates |
-| Add Case (practice-tuned forms) | Low-friction digital capture at the source |
-| PDF upload path for bulk days | Digitize legacy paper without forcing one UX |
-| MRN / DOS sync, demos can arrive later | Async enrichment; do not block the critical path |
-| Routes into Command Center ops | Clean handoff from intake → operator desk |
-
-Interview narrative: [docs/FOR_TECHNICAL_SYSTEMS_ROLES.md](docs/FOR_TECHNICAL_SYSTEMS_ROLES.md)
-
----
-
-## What Prism does
 
 1. **Sign in** with an invited work email. Prism emails a single-use MFA login code (8-hour sessions).
 2. **Accept the PHI screen**, then choose **How do you want to work today?**
@@ -56,17 +39,16 @@ Each screenshot is synthetic, not a live example.
 
 - [Provider guide (PDF)](docs/Prism-Provider-Guide.pdf) - practice-facing handout
 - [HIPAA & security](docs/HIPAA-AND-SECURITY.md) - program + technical safeguards
-- [For technical systems roles](docs/FOR_TECHNICAL_SYSTEMS_ROLES.md) - interview STARS narrative
 
 ## UL / LL
 
 Lid procedures. Chips are labeled **UL** / **LL**. Add procedure is for anything else.
 
-## Pair with Command Center (portfolio)
+## Pair with Command Center
 
 Downstream coding / operator desk:
 
-- Flagship: https://github.com/brivera2005/command-center-demo
+- https://github.com/brivera2005/command-center-demo
 - Operator guide: https://github.com/brivera2005/command-center-demo/blob/main/docs/OPERATOR_GUIDE.md
 - Portfolio index: https://github.com/brivera2005/healthcare-portfolio
 
