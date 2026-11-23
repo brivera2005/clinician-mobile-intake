@@ -87,3 +87,4 @@ Light touch updates so the public Prism demo stays marked current.
 - 2026-11-20 - Daily activity stamp (Prism intake demo).
 - 2026-11-21 - Daily activity stamp (Prism intake demo).
 - 2026-11-22 - Daily activity stamp (Prism intake demo).
+- 2026-11-23 - Daily activity stamp (Prism intake demo).
